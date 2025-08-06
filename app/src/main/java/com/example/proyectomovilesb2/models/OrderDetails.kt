@@ -16,6 +16,6 @@ data class OrderDetails(
         parentColumn = "locationId",
         entityColumn = "id",
     )
-    val location: Location,
+    val location: Location?,
 
 )

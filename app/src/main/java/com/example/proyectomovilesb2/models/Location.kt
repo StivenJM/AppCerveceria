@@ -9,4 +9,13 @@ data class Location(
     val address: String,
     val city: String,
     val country: String,
-)
+) {
+    companion object {
+        val empty = Location(
+            id = null,
+            address = "",
+            city = "",
+            country = ""
+        )
+    }
+}

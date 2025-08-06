@@ -69,8 +69,8 @@ fun OrdersHistoryScreen(
                         orderedAt = order.order.createdAt,
                         total = "$${order.order.total}",
                         isDelivered = order.order.isDelivered,
-                        location = order.location,
-                        payment = order.orderPayment.userPaymentProviderDetails.paymentProvider,
+                        location = order.location ?: Location.empty,
+                        payment = order.orderPayment.userPaymentProviderDetails?.paymentProvider ?: PaymentProvider.empty,
                         onOrderClicked = {},
                     )
 

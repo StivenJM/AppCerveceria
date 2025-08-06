@@ -7,5 +7,5 @@ data class BookmarkItemWithProduct(
     @Embedded
     val bookmark: BookmarkItem,
     @Relation(parentColumn = "productId", entityColumn = "id", entity = Product::class)
-    val product: LocalProduct,
+    val product: LocalProduct?,
 )

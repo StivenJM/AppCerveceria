@@ -10,4 +10,12 @@ data class PaymentProvider(
     @PrimaryKey val id: String,
     @StringRes val title: Int,
     @DrawableRes val icon: Int,
-)
+) {
+    companion object {
+        val empty = PaymentProvider(
+            id = "",
+            title = -1,
+            icon = -1
+        )
+    }
+}

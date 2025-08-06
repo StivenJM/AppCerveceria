@@ -11,5 +11,5 @@ data class OrderPaymentDetails(
         entityColumn = "providerId",
         entity = UserPaymentProvider::class,
     )
-    val userPaymentProviderDetails: UserPaymentProviderDetails,
+    val userPaymentProviderDetails: UserPaymentProviderDetails?,
 )

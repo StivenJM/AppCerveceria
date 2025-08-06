@@ -219,14 +219,14 @@ fun LocalProduct.getStructuredProduct() = this.product.also { product ->
 fun MutableList<CartItemWithProduct>.getStructuredCartItems(): List<CartItem> {
     return this.map {
         it.details.apply {
-            this.product = it.product.getStructuredProduct()
+            this.product = it.product?.getStructuredProduct()
         }
     }
 }
 
 fun MutableList<BookmarkItemWithProduct>.getStructuredBookmarkItems(): List<Product> {
-    return this.map {
-        it.product.getStructuredProduct()
+    return this.mapNotNull {
+        it.product?.getStructuredProduct()
     }
 }
 
