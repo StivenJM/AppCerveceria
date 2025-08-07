@@ -41,62 +41,67 @@ abstract class RoomDb : RoomDatabase() {
         private val description =
             "This is the description text that is supposed to be long enough to show how the UI looks, so it's not a real text.\n"
         private val manufacturers = listOf(
-            Manufacturer(id = 1, name = "Nike", icon = R.drawable.ic_nike),
-            Manufacturer(id = 2, name = "Adidas", icon = R.drawable.adidas_48),
+            Manufacturer(id = 1, name = "Pilsener", icon = R.drawable.pilsener),
+            Manufacturer(id = 2, name = "Club", icon = R.drawable.club1),
+            Manufacturer(id = 3, name = "Corona", icon = R.drawable.corona1),
         )
         private val advertisements = listOf(
-            Advertisement(1, R.drawable.air_huarache_gold_black_ads, 1, 0),
-            Advertisement(2, R.drawable.pegasus_trail_gortex_ads, 2, 0),
-            Advertisement(3, R.drawable.blazer_low_black_ads, 3, 0),
+            Advertisement(1, R.drawable.anuncio_pilsener, 1, 0),
+            Advertisement(2, R.drawable.anuncio_club, 2, 0),
+            Advertisement(3, R.drawable.anuncio_corona, 3, 0),
         )
-        private val nikeProducts = listOf(
+
+        private val pilsenerProducts = listOf(
             Product(
-                id = 1,
-                name = "Pegasus Trail Gortex Green",
-                image = R.drawable.pegasus_trail_3_gore_tex_dark_green,
-                price = 149.0,
+                id = 100,
+                name = "Cerveza Pilsener Original",
+                image = R.drawable.pilsener1,
+                price = 1.0,
                 description = description,
                 manufacturerId = 1,
-                basicColorName = "dark-green",
+                basicColorName = "white",
             ).also {
                 it.colors = mutableListOf(
                     ProductColor(productId = it.id,
                         colorName = it.basicColorName,
                         image = it.image),
-                    ProductColor(productId = it.id,
-                        colorName = "lemon",
-                        image = R.drawable.pegasus_trail_3_gore_tex_lemon),
                 )
             },
             Product(
-                id = 3,
-                name = "Air Huarache Gold",
-                image = R.drawable.air_huarache_le_gold_black,
-                price = 159.0,
+                id = 101,
+                name = "Cerveza Pilsener Light Playa",
+                image = R.drawable.pilsener2,
+                price = 1.1,
                 description = description,
                 manufacturerId = 1,
-                basicColorName = "gold",
+                basicColorName = "blue",
             ).also {
                 it.colors = mutableListOf(
                     ProductColor(productId = it.id,
                         colorName = it.basicColorName,
                         image = it.image),
-                    ProductColor(productId = it.id,
-                        colorName = "gray",
-                        image = R.drawable.air_huarache_le_gray_dark),
-                    ProductColor(productId = it.id,
-                        colorName = "pink",
-                        image = R.drawable.air_huarache_le_pink_black),
-                    ProductColor(productId = it.id,
-                        colorName = "red",
-                        image = R.drawable.air_huarache_le_red_black),
                 )
             },
             Product(
-                id = 7,
-                name = "Blazer Low Black",
-                image = R.drawable.blazer_low_black,
-                price = 120.0,
+                id = 102,
+                name = "Cerveza Pilsener Light",
+                image = R.drawable.pilsener3,
+                price = 1.5,
+                description = description,
+                manufacturerId = 1,
+                basicColorName = "blue",
+            ).also {
+                it.colors = mutableListOf(
+                    ProductColor(productId = it.id,
+                        colorName = it.basicColorName,
+                        image = it.image),
+                )
+            },
+            Product(
+                id = 103,
+                name = "Cerveza Pilsener Cero",
+                image = R.drawable.pilsener4,
+                price = 1.5,
                 description = description,
                 manufacturerId = 1,
                 basicColorName = "black",
@@ -105,40 +110,31 @@ abstract class RoomDb : RoomDatabase() {
                     ProductColor(productId = it.id,
                         colorName = it.basicColorName,
                         image = it.image),
-                    ProductColor(productId = it.id,
-                        colorName = "pink",
-                        image = R.drawable.blazer_low_pink),
-                    ProductColor(productId = it.id,
-                        colorName = "lemon",
-                        image = R.drawable.blazer_low_light_green),
                 )
-            },
+            }
         )
-        private val adidasProducts = listOf(
+
+        private val clubProducts = listOf(
             Product(
-                id = 10,
-                name = "Defiant Generation Green",
-                image = R.drawable.defiant_generation_green,
-                price = 149.0,
+                id = 1,
+                name = "Cerveza Club Original",
+                image = R.drawable.club2,
+                price = 1.1,
                 description = description,
                 manufacturerId = 2,
-                basicColorName = "green",
+                basicColorName = "dark-green",
             ).also {
                 it.colors = mutableListOf(
                     ProductColor(productId = it.id,
                         colorName = it.basicColorName,
                         image = it.image),
-                    ProductColor(productId = it.id,
-                        colorName = "red",
-                        image = R.drawable.defiant_generation_red),
                 )
             },
-
             Product(
-                id = 12,
-                name = "Solarthon Primegreen Gray",
-                image = R.drawable.solarthon_primegreen_gray,
-                price = 159.0,
+                id = 3,
+                name = "Cerveza Club Platino",
+                image = R.drawable.club3,
+                price = 1.2,
                 description = description,
                 manufacturerId = 2,
                 basicColorName = "gray",
@@ -147,12 +143,84 @@ abstract class RoomDb : RoomDatabase() {
                     ProductColor(productId = it.id,
                         colorName = it.basicColorName,
                         image = it.image),
+                )
+            },
+            Product(
+                id = 7,
+                name = "Cerveza Club Negra",
+                image = R.drawable.club4,
+                price = 1.5,
+                description = description,
+                manufacturerId = 2,
+                basicColorName = "black",
+            ).also {
+                it.colors = mutableListOf(
                     ProductColor(productId = it.id,
-                        colorName = "black",
-                        image = R.drawable.solarthon_primegreen_black),
+                        colorName = it.basicColorName,
+                        image = it.image),
+                )
+            },
+            Product(
+                id = 8,
+                name = "Cerveza Club Premium Roja",
+                image = R.drawable.club5,
+                price = 2.0,
+                description = description,
+                manufacturerId = 2,
+                basicColorName = "red",
+            ).also {
+                it.colors = mutableListOf(
                     ProductColor(productId = it.id,
-                        colorName = "red",
-                        image = R.drawable.solarthon_primegreen_red),
+                        colorName = it.basicColorName,
+                        image = it.image),
+                )
+            },
+        )
+        private val coronaProducts = listOf(
+            Product(
+                id = 10,
+                name = "Corona Extra",
+                image = R.drawable.corona2,
+                price = 1.0,
+                description = description,
+                manufacturerId = 3,
+                basicColorName = "yellow",
+            ).also {
+                it.colors = mutableListOf(
+                    ProductColor(productId = it.id,
+                        colorName = it.basicColorName,
+                        image = it.image),
+                )
+            },
+
+            Product(
+                id = 12,
+                name = "Corona Tropical Limón & Toronja",
+                image = R.drawable.corona3,
+                price = 1.1,
+                description = description,
+                manufacturerId = 3,
+                basicColorName = "red",
+            ).also {
+                it.colors = mutableListOf(
+                    ProductColor(productId = it.id,
+                        colorName = it.basicColorName,
+                        image = it.image),
+                )
+            },
+            Product(
+                id = 13,
+                name = "Corona Tropical Frutos Amarillos",
+                image = R.drawable.corona4,
+                price = 1.1,
+                description = description,
+                manufacturerId = 3,
+                basicColorName = "yellow",
+            ).also {
+                it.colors = mutableListOf(
+                    ProductColor(productId = it.id,
+                        colorName = it.basicColorName,
+                        image = it.image),
                 )
             },
         )
@@ -194,7 +262,7 @@ abstract class RoomDb : RoomDatabase() {
         )
 
         init {
-            nikeProducts.onEach {
+            pilsenerProducts.forEach {
                 it.sizes = mutableListOf(
                     ProductSize(it.id, 38),
                     ProductSize(it.id, 40),
@@ -202,7 +270,15 @@ abstract class RoomDb : RoomDatabase() {
                     ProductSize(it.id, 44),
                 )
             }
-            adidasProducts.onEach {
+            clubProducts.onEach {
+                it.sizes = mutableListOf(
+                    ProductSize(it.id, 38),
+                    ProductSize(it.id, 40),
+                    ProductSize(it.id, 42),
+                    ProductSize(it.id, 44),
+                )
+            }
+            coronaProducts.onEach {
                 it.sizes = mutableListOf(
                     ProductSize(it.id, 38),
                     ProductSize(it.id, 40),
@@ -245,7 +321,7 @@ abstract class RoomDb : RoomDatabase() {
             }
             /** Insert products */
             scope.launch {
-                nikeProducts.plus(adidasProducts)
+                clubProducts.plus(coronaProducts).plus(pilsenerProducts)
                     .forEach { product ->
 
                         dao.insertProduct(product = product)
