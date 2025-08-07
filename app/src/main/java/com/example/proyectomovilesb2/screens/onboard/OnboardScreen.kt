@@ -50,7 +50,7 @@ fun OnboardScreen(
     ) {
         val context = LocalContext.current
         val composition by rememberLottieComposition(
-            spec = LottieCompositionSpec.RawRes(R.raw.walking_shoes),
+            spec = LottieCompositionSpec.RawRes(R.raw.beer),
         )
         /** to control the animation speed */
         val progress by animateLottieCompositionAsState(
