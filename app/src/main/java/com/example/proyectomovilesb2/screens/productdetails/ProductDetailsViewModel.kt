@@ -47,7 +47,7 @@ class ProductDetailsViewModel @Inject constructor(
                         it.data?.let { product ->
                             _product.value = product
                             _selectedColor.value = product.basicColorName
-                            _selectedSize.value = product.sizes?.maxOf { size -> size.size } ?: 0
+                            _selectedSize.value = product.sizes?.find { it.size == 330 }?.size ?: 250
                         }
                     }
                     is DataResponse.Error -> {
