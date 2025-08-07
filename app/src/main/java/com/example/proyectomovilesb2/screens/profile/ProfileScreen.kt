@@ -5,13 +5,17 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -36,7 +40,7 @@ import com.example.proyectomovilesb2.ui.theme.Dimension
 
 @Composable
 fun ProfileScreen(
-    user: User,
+    user: User,  // Recibimos los datos del usuario
     onNavigationRequested: (route: String, removePreviousRoute: Boolean) -> Unit,
     profileViewModel: ProfileViewModel = hiltViewModel(),
 ) {
@@ -62,49 +66,14 @@ fun ProfileScreen(
         /** Header section */
         item {
             ProfileHeaderSection(
-                image = user.profile,
-                name = user.name,
-                email = user.email,
-                phone = user.phone,
+                image = user.profile,  // Imágenes de perfil si están disponibles
+                name = user.name ?: "No name",  // Mostrar el nombre
+                email = user.email ?: "No email",  // Mostrar el correo
+                phone = user.phone ?: "No phone",  // Mostrar el teléfono
             )
         }
-        /** Add virtual card section */
-        item {
-            Card(
-                modifier = Modifier.clickable { },
-                shape = MaterialTheme.shapes.medium,
-                backgroundColor = MaterialTheme.colors.secondary,
-                contentColor = MaterialTheme.colors.onSecondary,
-            ) {
-                Column(
-                    modifier = Modifier.padding(Dimension.pagePadding),
-                    verticalArrangement = Arrangement.spacedBy(Dimension.md),
-                ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        Text(
-                            modifier = Modifier.weight(1f),
-                            text = "Add virtual card",
-                            style = MaterialTheme.typography.button,
-                        )
-                        IconButton(
-                            icon = Icons.Rounded.KeyboardArrowRight,
-                            backgroundColor = MaterialTheme.colors.background,
-                            iconTint = MaterialTheme.colors.onBackground,
-                            onButtonClicked = {},
-                            iconSize = Dimension.smIcon,
-                            paddingValue = PaddingValues(Dimension.xs),
-                            shape = MaterialTheme.shapes.medium,
-                        )
-                    }
-                    Text(
-                        text = "Virtual cards allow you to purchase products on the store.",
-                        style = MaterialTheme.typography.body2,
-                    )
-                }
-            }
-        }
+
+
         /** General options */
         item {
             Text(
@@ -123,6 +92,7 @@ fun ProfileScreen(
                 },
             )
         }
+
         /** Personal options */
         item {
             Text(
@@ -137,8 +107,24 @@ fun ProfileScreen(
                 onOptionClicked = {},
             )
         }
+        item {
+            Spacer(modifier = Modifier.height(Dimension.pagePadding))
+            Button(
+                onClick = {
+
+                    onNavigationRequested(Screen.Login.route, true)  // Redirigir al login
+                },
+                modifier = Modifier.fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.secondary)
+            ) {
+                Text(text = stringResource(id = R.string.logout))  // Texto del botón
+            }
+        }
     }
 }
+
+
+
 
 @Composable
 fun ProfileOptionItem(icon: Int?, title: Int?, onOptionClicked: () -> Unit) {

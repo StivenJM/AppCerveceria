@@ -7,6 +7,7 @@ plugins {
     id("com.google.devtools.ksp")
     id("org.jetbrains.kotlin.plugin.serialization")
     id("com.google.dagger.hilt.android")
+
 }
 
 android {
@@ -63,6 +64,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.foundation.layout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -135,4 +137,11 @@ dependencies {
 
     // WhatIf
     implementation("com.github.skydoves:whatif:1.2.1")
+    //firebase
+    implementation ("com.google.firebase:firebase-auth-ktx:21.0.3")
+    implementation ("com.google.firebase:firebase-firestore-ktx:24.0.0")
+    implementation ("com.google.firebase:firebase-storage-ktx:20.0.0")
+    implementation ("com.google.firebase:firebase-database:21.0.0")
+    implementation (platform("com.google.firebase:firebase-bom:33.10.0"))
+
 }
