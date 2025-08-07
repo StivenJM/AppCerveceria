@@ -167,6 +167,12 @@ fun ProductDetailsScreen(
                         )
                     }
                     /** Price section */
+                    val precioBase = it.price // por 330 ml
+                    val mlBase = 330.0
+                    val mlSeleccionado = size.toDouble() // 'size' es el mililitro seleccionado
+
+                    val precioFinal = (precioBase * (mlSeleccionado / mlBase)).let { p -> String.format("%.2f", p) }
+
                     Text(
                         modifier = Modifier
                             .align(Alignment.BottomStart)
@@ -176,9 +182,11 @@ fun ProductDetailsScreen(
                                 to = 0.dp,
                                 duration = 700,
                             ),
-                        text = "$${it.price}",
+                        text = "$$precioFinal",
                         style = MaterialTheme.typography.h4,
                     )
+
+
                     /** Bookmarking button */
                     ReactiveBookmarkIcon(
                         modifier = Modifier
