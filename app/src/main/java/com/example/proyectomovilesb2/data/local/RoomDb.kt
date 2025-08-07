@@ -222,10 +222,10 @@ abstract class RoomDb : RoomDatabase() {
                 dao.saveUser(
                     User(
                         userId = 1,
-                        name = "Mustafa Ibrahim",
-                        profile = R.drawable.mustapha_profile,
-                        phone = "+249922943879",
-                        email = "mustfaibra@gmail.com",
+                        name = "Daniel Gomez",
+                        profile = R.drawable.user,
+                        phone = "+593984143849",
+                        email = "danielg@gmail.com",
                         password = "12344321",
                         token = "ds2f434ls2ks2lsj2ls",
                     )
